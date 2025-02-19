@@ -271,3 +271,7 @@
       padding: 1.2rem;     /* Делаем кнопки чуть больше */
     }
   }
+
+  .break-word {
+    word-wrap: break-word;
+  }
