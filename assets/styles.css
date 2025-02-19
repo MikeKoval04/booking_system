@@ -192,4 +192,82 @@
     padding: 1rem;
     border-radius: 8px;
   }
+  @media (max-width: 600px) {
+    .booking-form {
+      padding: 0.5rem;
+    }
+    h1 {
+      font-size: 1.2rem;
+    }
+    /* и т.д. */
+  }
+  /* Контейнер для кнопок на главной */
+.main-buttons {
+    display: flex;
+    flex-wrap: wrap;          /* чтобы кнопки переносились на новую строку при узком экране */
+    gap: 1rem;                /* расстояние между кнопками */
+    justify-content: center;  /* центрируем кнопки */
+    margin-top: 2rem;
+  }
   
+  /* Стили для больших кнопок */
+  .big-button {
+    display: inline-block;        /* или flex, если нужно */
+    background-color: #ff9800;    /* цвет фона */
+    color: #fff;                  /* цвет текста */
+    padding: 1rem 2rem;           /* внутренние отступы (высота и ширина кнопки) */
+    text-decoration: none;        /* убираем подчёркивание */
+    border-radius: 8px;           /* скруглённые углы */
+    font-size: 1.2rem;            /* увеличенный шрифт */
+    font-weight: bold;            /* жирный текст, чтобы лучше читалось */
+    text-align: center;           /* центрируем текст внутри кнопки */
+    transition: background-color 0.3s;
+  }
+  
+  .big-button:hover {
+    background-color: #ffa733;    /* немного светлее/темнее при наведении */
+  }
+  
+  /* Адаптивные стили для очень узких экранов */
+  @media (max-width: 480px) {
+    .big-button {
+      font-size: 1rem;     /* немного уменьшим шрифт, если нужно */
+      padding: 0.8rem 1.5rem;
+    }
+  }
+  
+
+  .room-button {
+    display: block;               /* Делает кнопку на всю ширину родителя */
+    width: 100%;                  /* Растягивает кнопку на всю ширину */
+    max-width: 300px;             /* Ограничивает максимальную ширину */
+    margin: 1rem auto;            /* Центрирует кнопку */
+    padding: 1rem;                /* Достаточно отступов для удобного нажатия */
+    font-size: 1.5rem;            /* Увеличивает текст, чтобы было видно */
+    text-align: center;           /* Центрирует текст внутри кнопки */
+    background-color: #ff9800;    /* Яркий цвет кнопки */
+    color: #fff;                  /* Белый текст */
+    text-decoration: none;        /* Убирает подчеркивание у ссылок */
+    border-radius: 8px;           /* Закругляет углы */
+    border: none;                 /* Убирает стандартные границы */
+    cursor: pointer;              /* Делает курсор в виде руки */
+    transition: background 0.3s;  /* Плавное изменение фона */
+  }
+  
+  .room-button:hover {
+    background-color: #ffa733;    /* Светлеет при наведении */
+    color: #fff;                  /* Белый текст */
+  }
+  
+  .room-button:active {
+    background-color: #e68900;    /* Затемняется при нажатии */
+    color: #fff;                  /* Белый текст */
+  }
+  
+  /* Адаптация для телефонов */
+  @media (max-width: 600px) {
+    .room-button {
+      font-size: 1.8rem;   /* Увеличиваем текст для удобного нажатия */
+      padding: 1.2rem;     /* Делаем кнопки чуть больше */
+    }
+  }
