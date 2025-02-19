@@ -1,51 +1,187 @@
-/* Пример простых глобальных стилей */
-body {
-    font-family: Arial, sans-serif;
+/* -----------------------
+   Тёмная тема
+------------------------ */
+:root {
+    /* Цвета */
+    --bg-color: #121212;          /* Основной фон */
+    --bg-secondary: #1e1e1e;      /* Фон для блоков (карточек, хедера) */
+    --text-color: #e0e0e0;        /* Основной текст */
+    --accent-color: #ff9800;      /* Акцент (кнопки, ссылки, hover) */
+    --accent-color-hover: #ffa733;/* Оттенок при наведении */
+  
+    /* Прочие переменные */
+    --font-family: 'Inter', sans-serif;
+    --border-radius: 6px;
+    --transition-speed: 0.3s;
+    --container-width: 960px;     /* Максимальная ширина контента */
+  }
+  
+  /* -----------------------
+     Общие стили
+  ------------------------ */
+  html, body {
     margin: 0;
     padding: 0;
-  }
-  
-  header, footer {
-    background-color: #f2f2f2;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  main {
-    padding: 1rem;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  
-  h1, h2 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .booking-form, .calendar, .qr-section {
-    margin-bottom: 2rem;
-  }
-  
-  .booking-form iframe,
-  .calendar iframe {
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin: 0.5rem 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
   }
   
   a {
-    color: #007bff;
+    color: var(--accent-color);
     text-decoration: none;
+    transition: color var(--transition-speed);
+  }
+  a:hover {
+    color: var(--accent-color-hover);
   }
   
-  a:hover {
-    text-decoration: underline;
+  /* Контейнер для выравнивания */
+  .container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* -----------------------
+     Заголовки и текст
+  ------------------------ */
+  h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* -----------------------
+     Шапка и подвал
+  ------------------------ */
+  header, footer {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    text-align: center;
+  }
+  header h1, footer p {
+    margin: 0;
+  }
+  
+  /* -----------------------
+     Основная область
+  ------------------------ */
+  main {
+    padding: 1rem;
+  }
+  
+  /* -----------------------
+     Блоки-карточки
+  ------------------------ */
+  .card {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* -----------------------
+     Специальные секции
+  ------------------------ */
+  /* QR-код */
+  .qr-section img {
+    max-width: 150px;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .qr-section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Форма бронирования */
+  .booking-form iframe {
+    width: 100%;
+    min-height: 600px;
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    transition: box-shadow var(--transition-speed);
+  }
+  .booking-form iframe:hover {
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+  }
+  
+  /* Календарь */
+  .calendar iframe {
+    width: 100%;
+    min-height: 600px;
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    transition: box-shadow var(--transition-speed);
+  }
+  .calendar iframe:hover {
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+  }
+  
+  /* -----------------------
+     Ссылки внутри контента
+  ------------------------ */
+  .calendar h2, .booking-form h2, .qr-section h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* -----------------------
+     Кнопки (если нужны)
+  ------------------------ */
+  .button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color var(--transition-speed);
+  }
+  .button:hover {
+    background-color: var(--accent-color-hover);
+  }
+  
+  /* -----------------------
+     Ссылки на главную/назад
+  ------------------------ */
+  footer a {
+    color: var(--accent-color);
+  }
+  footer a:hover {
+    color: var(--accent-color-hover);
+  }
+  
+  /* -----------------------
+     Адаптивная верстка
+  ------------------------ */
+  @media (max-width: 600px) {
+    .container {
+      padding: 0.5rem;
+    }
+    .qr-section img {
+      max-width: 100px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .booking-form iframe,
+    .calendar iframe {
+      min-height: 400px;
+    }
   }
   
