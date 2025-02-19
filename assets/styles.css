@@ -1,0 +1,51 @@
+/* Пример простых глобальных стилей */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, footer {
+    background-color: #f2f2f2;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  main {
+    padding: 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  h1, h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .booking-form, .calendar, .qr-section {
+    margin-bottom: 2rem;
+  }
+  
+  .booking-form iframe,
+  .calendar iframe {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 0.5rem 0;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
