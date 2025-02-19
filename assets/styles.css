@@ -185,3 +185,11 @@
     }
   }
   
+  .booking-form {
+    background-color: #222; /* Тёмный фон */
+    color: #fff !important;            /* Белый текст */
+    text-align: center !important;     /* Центрировать текст */
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
