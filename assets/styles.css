@@ -275,3 +275,11 @@
   .break-word {
     word-wrap: break-word;
   }
+
+  p { text-align: center; }
+
+  button {
+    display: block;        /* Преобразует кнопку в блочный элемент */
+    margin: 0 auto;        /* Автоматические отступы слева и справа для центрирования */
+  }
+  
