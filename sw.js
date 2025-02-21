@@ -16,10 +16,10 @@ self.addEventListener('install', (event) => {
     event.respondWith(
       caches.match(event.request).then((response) => {
         return response || fetch(event.request).then((fetchResponse) => {
-          // Проверяем, если это редирект, то не кэшируем
-          if (fetchResponse.redirected) {
-            return fetchResponse;
-          }
+          // Remove or comment out these lines:
+          // if (fetchResponse.redirected) {
+          //   return fetchResponse;
+          // }
           return caches.open('v1').then((cache) => {
             cache.put(event.request, fetchResponse.clone());
             return fetchResponse;
@@ -31,5 +31,4 @@ self.addEventListener('install', (event) => {
       })
     );
   });
-  
-  
+
