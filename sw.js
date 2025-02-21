@@ -13,20 +13,20 @@ self.addEventListener('install', (event) => {
   });
   
   self.addEventListener('fetch', (event) => {
+    if (event.request.url.endsWith('/') || event.request.url.endsWith('/index.html')) {
+      // Always fetch from network for the root
+      event.respondWith(fetch(event.request));
+      return;
+    }
     event.respondWith(
       caches.match(event.request).then((response) => {
         return response || fetch(event.request).then((fetchResponse) => {
-          // Remove or comment out these lines:
-          // if (fetchResponse.redirected) {
-          //   return fetchResponse;
-          // }
           return caches.open('v1').then((cache) => {
             cache.put(event.request, fetchResponse.clone());
             return fetchResponse;
           });
-        }).catch((error) => {
-          console.error('Ошибка при запросе:', error);
-          return caches.match('/offline.html'); // Подставьте свой offline-ресурс
+        }).catch(() => {
+          return caches.match('/offline.html');
         });
       })
     );
