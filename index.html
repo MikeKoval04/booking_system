@@ -27,7 +27,9 @@
 
   <footer>
     <p>Добавьте сайт на главный экран, чтобы использовать его как PWA-приложение</p>
-    <p>Также доступно в виде <a href = 'https://t.me/piraobot'>Telegram Mini-App</a></p>
+    <button id="installBtn" style="display:none;">Установить приложение</button>
+
+    <p>Также доступно в виде <a href='https://t.me/piraobot'>Telegram Mini-App</a></p>
     <p>© tinsl, 2025</p>
   </footer>
   <script>
@@ -40,6 +42,21 @@
           console.error('Ошибка регистрации Service Worker:', error);
         });
     }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'inline-block';
+    });
+
+    document.getElementById('installBtn').addEventListener('click', () => {
+      document.getElementById('installBtn').style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+      });
+    });
   </script>
   
 </body>
