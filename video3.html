@@ -1,88 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ВИДЕО С КНОПКОЙ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .video-container {
-            width: 100%;
-            /* max-width: 1200px; */
-            margin: 0px 0;
-        }
-
-        iframe {
-            width: 100%;
-            height: 90vh;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .big-button {
-            padding: 25px 50px;
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #2196F3, #21CBF3);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(33,150,243,0.3);
-            margin: 10px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .big-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(33,150,243,0.4);
-            background: linear-gradient(135deg, #21CBF3, #2196F3);
-        }
-
-        .big-button:active {
-            transform: translateY(1px);
-        }
-
-        @media (max-width: 768px) {
-            iframe {
-                height: 60vh;
-            }
-            
-            .big-button {
-                padding: 20px 40px;
-                font-size: 24px;
-                margin: 20px 15px;
-                width: calc(100% - 30px);
-                text-align: center;
-            }
-        }
-    </style>
+    <title>Видео на сайте</title>
 </head>
-<body>
-    <div class="video-container">
-        <iframe 
-            src="https://nuum.ru/embed/videos/4604223--3?vq=hd1080&autoplay=1&mute=1&controls=0" 
-            title="Nuum video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    
-    <a href="https://forms.yandex.ru/cloud/67c7a3b884227cd6b906e845/?answer_short_text_72850734=ГРУППА3" class="big-button" target="_self">
-        ВЕРНУТЬСЯ В ФОРМУ
-    </a>
+<body>    
+    <video id="myVideo" width="100%" height="100%" controls>
+        <source src="banner3.mp4" type="video/mp4">
+        Ваш браузер не поддерживает встроенные видео.
+    </video>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем элемент видео
+            const video = document.getElementById('myVideo');
+            
+            // Добавляем обработчик события 'ended' (окончание видео)
+            video.addEventListener('ended', function() {
+                // Небольшая задержка перед возвратом (можно удалить при необходимости)
+                setTimeout(function() {
+                    history.back();
+                }, 250);
+            });
+        });
+    </script>
 </body>
 </html>
