@@ -50,10 +50,10 @@
       <!-- Замените URL на ссылку вашего Figma-прототипа -->
       <iframe id="figmaFrame" 
       width="800"
-    height="450"
-    src="https://embed.figma.com/proto/XI4xM5PTLEri0PRO95VcOc/EMOT_MARK?page-id=0%3A1&node-id=303-17008&viewport=-2123%2C-440%2C0.24&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=303%3A17008&embed-host=share"
-    allowfullscreen>
-</iframe>
+      height="450"
+      src="https://embed.figma.com/proto/XI4xM5PTLEri0PRO95VcOc/EMOT_MARK?page-id=0%3A1&node-id=303-17008&viewport=-2123%2C-440%2C0.24&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=303%3A17008&embed-host=share"
+      allowfullscreen>
+    </iframe>
     </div>
     
     <div class="button-container">
@@ -62,13 +62,31 @@
   </div>
   
   <script>
+    // При загрузке страницы сохраняем referrer, если он есть
+    let previousUrl = document.referrer || '';
+    
+    // Сохраняем URL при загрузке страницы
+    window.addEventListener('load', function() {
+      if (!previousUrl && sessionStorage.getItem('previousUrl')) {
+        previousUrl = sessionStorage.getItem('previousUrl');
+      } else if (previousUrl) {
+        sessionStorage.setItem('previousUrl', previousUrl);
+      }
+    });
+
     function goBack() {
-      history.back();
+      // Проверяем, находимся ли мы во фрейме
+      if (window == window.top) {
+        // Это основное окно - используем обычный history.back()
+        window.history.back();
+      } else {
+        // Это окно внутри iframe - нам нужно вернуть родительское окно
+        window.top.history.back();
+      }
     }
 
-    // Обработчик сообщений от Figma (если это будет работать)
+    // Обработчик сообщений от Figma
     window.addEventListener("message", (event) => {
-      // Проверка на сообщение от Figma
       if (event.data === "goBack") {
         goBack();
       }
