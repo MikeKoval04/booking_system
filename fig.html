@@ -75,15 +75,26 @@
     });
 
     function goBack() {
-      // Проверяем, находимся ли мы во фрейме
-      if (window == window.top) {
-        // Это основное окно - используем обычный history.back()
-        window.history.back();
+      // При загрузке страницы сохраняем начальное состояние истории
+      const initialHistoryLength = sessionStorage.getItem('initialHistoryLength');
+      const currentHistoryLength = window.history.length;
+      
+      // Вычисляем, на сколько шагов назад нужно вернуться
+      const stepsBack = currentHistoryLength - initialHistoryLength + 1;
+      
+      if (stepsBack > 0) {
+        window.history.go(-stepsBack);
       } else {
-        // Это окно внутри iframe - нам нужно вернуть родительское окно
-        window.top.history.back();
+        window.history.back();
       }
     }
+
+    // При загрузке страницы сохраняем длину истории
+    window.addEventListener('load', function() {
+      if (!sessionStorage.getItem('initialHistoryLength')) {
+        sessionStorage.setItem('initialHistoryLength', window.history.length);
+      }
+    });
 
     // Обработчик сообщений от Figma
     window.addEventListener("message", (event) => {
