@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    p {
+      text-align: center;
+      font-family: Helvetica, sans-serif;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .iframe-container {
+      flex: 1;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .button-container {
+      padding: 10px;
+      text-align: center;
+      background: #f5f5f5;
+    }
+    .back-button {
+      padding: 8px 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .back-button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p>Спасибо, что открыли задание! Если снизу Вы видите белый экран, всё нормально, подождите, задание скоро загрузится!</p>
+    <div class="iframe-container">
+      <!-- Замените URL на ссылку вашего Figma-прототипа -->
+      <iframe 
+      width="800"
+      height="450"
+      src="https://embed.figma.com/proto/XI4xM5PTLEri0PRO95VcOc/EMOT_MARK?page-id=0%3A1&node-id=399-23626&p=f&viewport=-410%2C-1276%2C0.05&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=399%3A23626&embed-host=share"
+      allowfullscreen>
+    </iframe>
+    </div>
+    
+    <div class="button-container">
+      <button class="back-button" onclick="goBack()">Вернуться в форму</button>
+    </div>
+  </div>
+  
+  <script>
+    // При загрузке страницы сохраняем referrer, если он есть
+    let previousUrl = document.referrer || '';
+    
+    // Сохраняем URL при загрузке страницы
+    window.addEventListener('load', function() {
+      if (!previousUrl && sessionStorage.getItem('previousUrl')) {
+        previousUrl = sessionStorage.getItem('previousUrl');
+      } else if (previousUrl) {
+        sessionStorage.setItem('previousUrl', previousUrl);
+      }
+    });
+
+    function goBack() {
+      // При загрузке страницы сохраняем начальное состояние истории
+      const initialHistoryLength = sessionStorage.getItem('initialHistoryLength');
+      const currentHistoryLength = window.history.length;
+      
+      // Вычисляем, на сколько шагов назад нужно вернуться
+      const stepsBack = currentHistoryLength - initialHistoryLength + 1;
+      
+      if (stepsBack > 0) {
+        window.history.go(-stepsBack);
+      } else {
+        window.history.back();
+      }
+    }
+
+    // При загрузке страницы сохраняем длину истории
+    window.addEventListener('load', function() {
+      if (!sessionStorage.getItem('initialHistoryLength')) {
+        sessionStorage.setItem('initialHistoryLength', window.history.length);
+      }
+    });
+
+    // Обработчик сообщений от Figma
+    window.addEventListener("message", (event) => {
+      if (event.data === "goBack") {
+        goBack();
+      }
+    });
+  </script>
+</body>
+</html>
