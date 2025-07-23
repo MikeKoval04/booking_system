@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Система бронирования аудиторий</title>
+  <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="assets/styles_legacy.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать в систему бронирования!</h1>
+  </header>
+
+  <main>
+    <p>Нажмите, для какого кабинета забронировать время или посмотреть расписание:</p>
+        
+        <a href="room3_legacy.html" class="room-button">Ц06</a>
+        <a href="room1_legacy.html" class="room-button">Ц07</a>
+        <a href="room2_legacy.html" class="room-button">Ц19</a>
+
+
+      <!-- Если появятся дополнительные, добавьте их здесь -->
+  </main>
+
+  <footer>
+    <p>Добавьте сайт на главный экран, чтобы использовать его как PWA-приложение</p>
+    <button id="installBtn" style="display:none;">Установить приложение</button>
+
+    <p>Также доступно в виде <a href='https://t.me/piraobot'>Telegram Mini-App</a></p>
+    <p>© tinsl, 2025</p>
+    <p><a href="index.html" style="color: #FF9800; text-decoration: none;">Переключиться на новую версию</a></p>
+  </footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker зарегистрирован с областью:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Ошибка регистрации Service Worker:', error);
+        });
+    }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'inline-block';
+    });
+
+    document.getElementById('installBtn').addEventListener('click', () => {
+      document.getElementById('installBtn').style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+      });
+    });
+  </script>
+  
+</body>
+</html>

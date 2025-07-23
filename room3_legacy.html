@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ц06</title>
+  <link rel="stylesheet" href="assets/styles_legacy.css" />
+</head>
+<body>
+  <header>
+    <h1>Бронирование: Ц06</h1>
+  </header>
+
+  <main>
+    
+
+    <!-- Айфрейм с Яндекс.Формой -->
+    <section class="booking-form">
+      <h2>Форма бронирования</h2>
+    <script src="https://forms.yandex.ru/_static/embed.js">
+    </script>
+    <iframe 
+      src="https://forms.yandex.ru/cloud/67b5cc61493639f465cb6614/?iframe=1&answer_short_text_71431068=Ц06"
+      frameborder="0"
+      name="ya-form-67b5cc61493639f465cb6614"
+      width="100%"
+      height="1000">
+    </iframe>
+      
+    </section>
+
+    <!-- Айфрейм с Google Calendar -->
+    <section class="calendar">
+      <h2>Расписание Ц06</h2>
+      <p>Для управления событием(изменением времени/удалением) используйте приложение Календарь на Вашем устройстве или Ваш Google Calendar (аккаунт должен совпадать с почтой, которую Вы указали). Управление доступно после того, как Вы примете приглашение на почте или в приложении.</p>
+      <p><a href = 'https://telegra.ph/Kak-prinyat-priglashenie-i-upravlyat-sobytiem-02-22'>Подробная инструкция о том, как управлять событием</a></p>
+      <iframe 
+        src="https://calendar.google.com/calendar/embed?src=af8066ba1f9fb42f7d892086935260a48aa9e3a0f6cb5972140e0ec0c63ecd01@group.calendar.google.com&ctz=Europe%2FMoscow&wkst=2&mode=WEEK" 
+        style="border: 0" 
+        width="100%" 
+        height="600" 
+        frameborder="0" 
+        scrolling="no">
+      </iframe>
+    </section>
+
+    <p>Чтобы добавить календарь этой аудитории в приложение "Календарь" на iPhone:<br>Добавьте подписной календарь в приложении, вставив ссылку:<br><code class="break-word">https://calendar.google.com/calendar/ical/af8066ba1f9fb42f7d892086935260a48aa9e3a0f6cb5972140e0ec0c63ecd01%40group.calendar.google.com/public/basic.ics</code></code></p>
+    <button onclick="copyToClipboard()">Скопировать ссылку</button>
+
+    <script>
+    function copyToClipboard() {
+      const text = "https://calendar.google.com/calendar/ical/af8066ba1f9fb42f7d892086935260a48aa9e3a0f6cb5972140e0ec0c63ecd01%40group.calendar.google.com/public/basic.ics";
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Ссылка скопирована в буфер обмена');
+      });
+    }
+    </script>
+    <p><i><a href='https://telegra.ph/na-mobilnom-ustrojstve-02-13'>ПОДРОБНАЯ ИНСТРУКЦИЯ</a></i></p>
+  </main>
+
+  <footer>
+    <p><a href="index_legacy.html">Вернуться на главную</a></p>
+    <p><a href="room3.html" style="color: #FF9800; text-decoration: none;">Переключиться на новую версию</a></p>
+    <p>©tinsl, 2025</p>
+  </footer>
+</body>
+</html>

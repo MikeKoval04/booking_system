@@ -1,0 +1,385 @@
+/* -----------------------
+   Тёмная тема
+------------------------ */
+:root {
+    /* Цвета */
+    --bg-color: #121212;          /* Основной фон */
+    --bg-secondary: #1e1e1e;      /* Фон для блоков (карточек, хедера) */
+    --text-color: #e0e0e0;        /* Основной текст */
+    --accent-color: #ff9800;      /* Акцент (кнопки, ссылки, hover) */
+    --accent-color-hover: #ffa733;/* Оттенок при наведении */
+  
+    /* Прочие переменные */
+    --font-family: 'Inter', sans-serif;
+    --border-radius: 6px;
+    --transition-speed: 0.3s;
+    --container-width: 960px;     /* Максимальная ширина контента */
+  }
+  
+  /* -----------------------
+     Общие стили
+  ------------------------ */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+  }
+  
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+  }
+  a:hover {
+    color: var(--accent-color-hover);
+  }
+  
+  /* Контейнер для выравнивания */
+  .container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* -----------------------
+     Заголовки и текст
+  ------------------------ */
+  h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* -----------------------
+     Шапка и подвал
+  ------------------------ */
+  header, footer {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    text-align: center;
+  }
+  header h1, footer p {
+    margin: 0;
+  }
+  
+  /* -----------------------
+     Основная область
+  ------------------------ */
+  main {
+    padding: 1rem;
+  }
+  
+  /* -----------------------
+     Блоки-карточки
+  ------------------------ */
+  .card {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* -----------------------
+     Специальные секции
+  ------------------------ */
+  /* QR-код */
+  .qr-section img {
+    max-width: 150px;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .qr-section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Форма бронирования */
+  .booking-form iframe {
+    width: 100%;
+    min-height: 600px;
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    transition: box-shadow var(--transition-speed);
+  }
+  .booking-form iframe:hover {
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+  }
+  
+  /* Календарь */
+  .calendar iframe {
+    width: 100%;
+    min-height: 600px;
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    transition: box-shadow var(--transition-speed);
+  }
+  .calendar iframe:hover {
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+  }
+  
+  /* -----------------------
+     Ссылки внутри контента
+  ------------------------ */
+  .calendar h2, .booking-form h2, .qr-section h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* -----------------------
+     Кнопки (если нужны)
+  ------------------------ */
+  .button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color var(--transition-speed);
+  }
+  .button:hover {
+    background-color: var(--accent-color-hover);
+  }
+  
+  /* -----------------------
+     Ссылки на главную/назад
+  ------------------------ */
+  footer a {
+    color: var(--accent-color);
+  }
+  footer a:hover {
+    color: var(--accent-color-hover);
+  }
+  
+  /* -----------------------
+     Адаптивная верстка
+  ------------------------ */
+  @media (max-width: 600px) {
+    .container {
+      padding: 0.5rem;
+    }
+    .qr-section img {
+      max-width: 100px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .booking-form iframe,
+    .calendar iframe {
+      min-height: 400px;
+    }
+  }
+  
+  .booking-form {
+    background-color: #222; /* Тёмный фон */
+    color: #fff !important;            /* Белый текст */
+    text-align: center !important;     /* Центрировать текст */
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  @media (max-width: 600px) {
+    .booking-form {
+      padding: 0.5rem;
+    }
+    h1 {
+      font-size: 1.2rem;
+    }
+    /* и т.д. */
+  }
+  /* Контейнер для кнопок на главной */
+.main-buttons {
+    display: flex;
+    flex-wrap: wrap;          /* чтобы кнопки переносились на новую строку при узком экране */
+    gap: 1rem;                /* расстояние между кнопками */
+    justify-content: center;  /* центрируем кнопки */
+    margin-top: 2rem;
+  }
+  
+  /* Стили для больших кнопок */
+  .big-button {
+    display: inline-block;        /* или flex, если нужно */
+    background-color: #ff9800;    /* цвет фона */
+    color: #fff;                  /* цвет текста */
+    padding: 1rem 2rem;           /* внутренние отступы (высота и ширина кнопки) */
+    text-decoration: none;        /* убираем подчёркивание */
+    border-radius: 8px;           /* скруглённые углы */
+    font-size: 1.2rem;            /* увеличенный шрифт */
+    font-weight: bold;            /* жирный текст, чтобы лучше читалось */
+    text-align: center;           /* центрируем текст внутри кнопки */
+    transition: background-color 0.3s;
+  }
+  
+  .big-button:hover {
+    background-color: #ffa733;    /* немного светлее/темнее при наведении */
+  }
+  
+  /* Адаптивные стили для очень узких экранов */
+  @media (max-width: 480px) {
+    .big-button {
+      font-size: 1rem;     /* немного уменьшим шрифт, если нужно */
+      padding: 0.8rem 1.5rem;
+    }
+  }
+  
+
+  .room-button {
+    /* Базовые стили */
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+    
+    /* Liquid Glass структура */
+    position: relative;
+    overflow: hidden;
+    color: white;
+    
+    /* Тени и переходы */
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 152, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  }
+
+  /* Эффект размытия фона - ТОЛЬКО фон */
+  .room-button::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 152, 0, 0.8) 0%,
+      rgba(255, 193, 7, 0.7) 50%,
+      rgba(255, 152, 0, 0.8) 100%
+    );
+    backdrop-filter: blur(0px); /* Убираем размытие чтобы текст был четким */
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Тонировка поверх фона */
+  .room-button::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      inset 2px 2px 1px 0 rgba(255, 255, 255, 0.3),
+      inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .room-button:hover {
+    padding: 1.8rem 2.3rem;
+    border-radius: 2.5rem;
+    box-shadow: 
+      0 8px 8px rgba(0, 0, 0, 0.3), 
+      0 0 25px rgba(255, 152, 0, 0.4);
+    transform: translateY(-2px);
+    color: #000000; /* Черный текст для лучшего контраста */
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); /* Белая тень */
+  }
+
+  .room-button:hover::before {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 193, 7, 1) 0%, /* Более светлый желтый */
+      rgba(255, 235, 59, 0.98) 50%, /* Яркий желтый */
+      rgba(255, 193, 7, 1) 100%
+    );
+  }
+
+  .room-button:hover::after {
+    background: rgba(255, 255, 255, 0.3); /* Больше белого оверлея */
+  }
+
+  .room-button:active {
+    transform: translateY(1px);
+    box-shadow: 
+      0 4px 4px rgba(0, 0, 0, 0.4), 
+      0 0 15px rgba(255, 152, 0, 0.5);
+  }
+  
+  /* Адаптация для телефонов */
+  @media (max-width: 600px) {
+    .room-button {
+      font-size: 1.8rem;   /* Увеличиваем текст для удобного нажатия */
+      padding: 1.2rem;     /* Делаем кнопки чуть больше */
+    }
+  }
+
+  .break-word {
+    word-wrap: break-word;
+  }
+
+  p { text-align: center; }
+
+  button {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+  }
+
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+  }
+
+/* Оптимизация производительности */
+@media (prefers-reduced-motion: reduce) {
+  .room-button {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Упрощение для слабых устройств */
+@media (max-width: 600px) {
+  .room-button {
+    font-size: 1.8rem;
+    padding: 1.2rem;
+  }
+}
+
+/* Высокая производительность для больших экранов */
+@media (min-width: 1200px) {
+  .room-button {
+    will-change: transform, box-shadow;
+  }
+}

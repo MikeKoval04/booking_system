@@ -32,12 +32,23 @@ html, body {
 }
 
 body {
-    background: url('../back.png') center/cover no-repeat fixed;
     color: var(--text-white);
     position: relative;
+    background-color: #1a1a1a; /* Fallback background color */
 }
 
 body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../back.png') center/cover no-repeat;
+    z-index: -2;
+}
+
+body::after {
     content: '';
     position: fixed;
     top: 0;
@@ -543,7 +554,7 @@ body::before {
 /* Календарь Google */
 .content-section#calendar-section .iframe-wrapper {
     height: 100%;
-    min-height: 600px;
+    min-height: 900px; /* Увеличил высоту в 1.5 раза */
 }
 
 /* Дополнительная информация */
