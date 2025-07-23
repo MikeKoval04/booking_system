@@ -238,30 +238,88 @@
   
 
   .room-button {
-    display: block;               /* Делает кнопку на всю ширину родителя */
-    width: 100%;                  /* Растягивает кнопку на всю ширину */
-    max-width: 300px;             /* Ограничивает максимальную ширину */
-    margin: 1rem auto;            /* Центрирует кнопку */
-    padding: 1rem;                /* Достаточно отступов для удобного нажатия */
-    font-size: 1.5rem;            /* Увеличивает текст, чтобы было видно */
-    text-align: center;           /* Центрирует текст внутри кнопки */
-    background-color: #ff9800;    /* Яркий цвет кнопки */
-    color: #fff;                  /* Белый текст */
-    text-decoration: none;        /* Убирает подчеркивание у ссылок */
-    border-radius: 8px;           /* Закругляет углы */
-    border: none;                 /* Убирает стандартные границы */
-    cursor: pointer;              /* Делает курсор в виде руки */
-    transition: background 0.3s;  /* Плавное изменение фона */
+    /* Базовые стили */
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+    
+    /* Liquid Glass структура */
+    position: relative;
+    overflow: hidden;
+    color: white;
+    
+    /* Тени и переходы */
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 152, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
   }
-  
+
+  /* Эффект размытия фона - ТОЛЬКО фон */
+  .room-button::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 152, 0, 0.8) 0%,
+      rgba(255, 193, 7, 0.7) 50%,
+      rgba(255, 152, 0, 0.8) 100%
+    );
+    backdrop-filter: blur(0px); /* Убираем размытие чтобы текст был четким */
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Тонировка поверх фона */
+  .room-button::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      inset 2px 2px 1px 0 rgba(255, 255, 255, 0.3),
+      inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
+  }
+
   .room-button:hover {
-    background-color: #ffa733;    /* Светлеет при наведении */
-    color: #fff;                  /* Белый текст */
+    padding: 1.8rem 2.3rem;
+    border-radius: 2.5rem;
+    box-shadow: 
+      0 8px 8px rgba(0, 0, 0, 0.3), 
+      0 0 25px rgba(255, 152, 0, 0.4);
+    transform: translateY(-2px);
+    color: #000000; /* Черный текст для лучшего контраста */
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); /* Белая тень */
   }
-  
+
+  .room-button:hover::before {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 193, 7, 1) 0%, /* Более светлый желтый */
+      rgba(255, 235, 59, 0.98) 50%, /* Яркий желтый */
+      rgba(255, 193, 7, 1) 100%
+    );
+  }
+
+  .room-button:hover::after {
+    background: rgba(255, 255, 255, 0.3); /* Больше белого оверлея */
+  }
+
   .room-button:active {
-    background-color: #e68900;    /* Затемняется при нажатии */
-    color: #fff;                  /* Белый текст */
+    transform: translateY(1px);
+    box-shadow: 
+      0 4px 4px rgba(0, 0, 0, 0.4), 
+      0 0 15px rgba(255, 152, 0, 0.5);
   }
   
   /* Адаптация для телефонов */
@@ -279,7 +337,49 @@
   p { text-align: center; }
 
   button {
-    display: block;        /* Преобразует кнопку в блочный элемент */
-    margin: 0 auto;        /* Автоматические отступы слева и справа для центрирования */
+    display: block;
+    margin: 1rem auto;
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
-  
+
+  button:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+  }
+
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+  }
+
+/* Оптимизация производительности */
+@media (prefers-reduced-motion: reduce) {
+  .room-button {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Упрощение для слабых устройств */
+@media (max-width: 600px) {
+  .room-button {
+    font-size: 1.8rem;
+    padding: 1.2rem;
+  }
+}
+
+/* Высокая производительность для больших экранов */
+@media (min-width: 1200px) {
+  .room-button {
+    will-change: transform, box-shadow;
+  }
+}
