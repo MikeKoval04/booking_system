@@ -96,7 +96,7 @@ body::before {
     align-items: center;
     gap: 20px;
     width: 100%;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 60px auto;
 }
 
 .room-button {
@@ -167,7 +167,7 @@ body::before {
    Футер главной страницы
 ------------------------ */
 .main-footer {
-    margin-top: 30px;
+    margin-top: auto;
     width: 100%;
     max-width: 500px;
     text-align: center;
@@ -278,8 +278,8 @@ body::before {
 }
 
 .telegram-icon {
-    width: 84px;
-    height: 84px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
 }
 
@@ -322,46 +322,44 @@ body::before {
 .room-page {
     padding: 0;
     overflow: hidden;
-    height: 100vh; /* Фиксируем высоту для предсказуемого поведения */
 }
 
 /* Кнопка "Назад" */
 .home-button {
     position: fixed;
-    top: 15px; /* Скорректировал позицию, чтобы не было наложений */
-    left: 15px;
+    top: 20px;
+    left: 20px;
     width: 44px;
     height: 44px;
     background: linear-gradient(145deg, 
-        rgba(255, 255, 255, 0.15),
-        rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(25px); /* Синхронизировал блюр с хедером */
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+        rgba(255, 152, 0, 0.3),
+        rgba(255, 152, 0, 0.1));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 152, 0, 0.3);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    z-index: 1002;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: var(--text-white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    z-index: 1000;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(255, 152, 0, 0.2);
 }
 
 .home-button::before {
-    content: ''; /* Убрали текстовый символ */
-    display: block;
-    width: 22px; /* Размер иконки */
-    height: 22px;
-    /* Встроили SVG-иконку для кросс-платформенной консистентности */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    content: '←';
 }
 
 .home-button:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    background: linear-gradient(145deg, 
+        rgba(255, 152, 0, 0.4),
+        rgba(255, 152, 0, 0.2));
+    box-shadow: 0 6px 25px rgba(255, 152, 0, 0.3);
 }
 
 /* Заголовок комнаты */
@@ -371,49 +369,41 @@ body::before {
     left: 0;
     right: 0;
     background: linear-gradient(145deg, 
-        rgba(30, 30, 30, 0.2),
-        rgba(30, 30, 30, 0.1));
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    z-index: 1001;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.room-header .header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    padding: 80px 20px 20px 20px;
+    text-align: center;
+    z-index: 100;
+    transition: var(--transition);
 }
 
 .room-header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin: 0;
+    margin-bottom: 20px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
 }
 
 /* Переключатель режимов */
 .mode-switcher {
     display: flex;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 4px;
     gap: 4px;
-    width: 100%;
+    justify-content: center;
     max-width: 350px;
+    margin: 0 auto;
 }
 
 .mode-btn {
     flex: 1;
-    padding: 12px 10px;
+    padding: 12px 20px;
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
     border: none;
@@ -423,7 +413,6 @@ body::before {
     cursor: pointer;
     transition: var(--transition);
     white-space: nowrap;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .mode-btn.active {
@@ -439,12 +428,17 @@ body::before {
 
 /* Контент комнаты */
 .room-content {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 140px;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 80px;
     overflow: hidden;
+    margin: 0 15px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .content-section {
@@ -453,15 +447,15 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
+    padding: 20px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: all 0.3s ease;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 150px 15px 100px 15px; /* Отступы для хедера и футера */
 }
 
 .content-section.active {
@@ -480,7 +474,6 @@ body::before {
     border-radius: 12px;
     padding: 15px;
     text-align: center;
-    flex-shrink: 0; /* Предотвращаем сжатие */
 }
 
 .booking-instruction p {
@@ -492,58 +485,46 @@ body::before {
 
 /* Скроллбары */
 .content-section::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .content-section::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
 }
 
 .content-section::-webkit-scrollbar-thumb {
-    background: rgba(255, 152, 0, 0.6);
-    border-radius: 3px;
+    background: rgba(255, 152, 0, 0.5);
+    border-radius: 4px;
+    transition: background 0.3s ease;
 }
 
-/* Iframe Wrapper & Iframe */
-.iframe-wrapper {
-    flex: 1 1 auto; /* Позволяем расти и сжиматься */
-    min-height: 500px; /* Минимальная высота для формы */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.content-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 152, 0, 0.7);
 }
 
+/* Стили для iframe */
 .content-section iframe {
     width: 100%;
+    flex: 1;
+    min-height: calc(100vh - 240px);
     height: 100%;
     border: none;
-    flex-grow: 1;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* Специально для Яндекс Формы - авто-высота */
-.content-section#booking-section .iframe-wrapper {
-    /* Высота будет управляться скриптом embed.js. */
-    /* Убираем фиксированную высоту, позволяем контейнеру расти. */
-    height: auto;
-    min-height: unset;
-    flex-shrink: 0; /* Не сжиматься */
+/* Специальные стили для айфреймов форм */
+.content-section#booking-section iframe {
+    height: 600px !important;
+    max-height: 600px !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
 }
 
-.content-section#booking-section iframe.yandex-form-iframe {
-    /* Скрипт embed.js установит высоту. */
-    /* Убираем height: 100% чтобы не ограничивать его. */
-    height: auto; 
-    min-height: 800px; /* Начальная высота, пока скрипт не отработал. */
-    overflow: hidden !important;
-}
-
-/* Календарь Google */
-.content-section#calendar-section .iframe-wrapper {
-    height: 100%;
-    min-height: 600px;
+.content-section#calendar-section iframe {
+    height: 600px !important;
+    max-height: none;
 }
 
 /* Дополнительная информация */
@@ -556,8 +537,7 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 20px;
-    margin-top: 0; /* Убрали лишний отступ */
-    flex-shrink: 0;
+    margin-top: 20px;
 }
 
 .info-text p {
@@ -581,17 +561,6 @@ body::before {
     text-decoration: underline;
 }
 
-/* Стили для ссылки на инструкцию в блоке copy-link-section */
-.copy-link-section a {
-    color: var(--primary-orange);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.copy-link-section a:hover {
-    text-decoration: underline;
-}
-
 /* Секция копирования ссылки */
 .copy-link-section {
     background: linear-gradient(145deg, 
@@ -602,7 +571,6 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 20px;
-    flex-shrink: 0;
 }
 
 .copy-link-section p {
@@ -634,7 +602,6 @@ body::before {
     cursor: pointer;
     transition: var(--transition);
     width: 100%;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .copy-button:hover {
@@ -649,15 +616,14 @@ body::before {
     left: 0;
     right: 0;
     background: linear-gradient(145deg, 
-        rgba(30, 30, 30, 0.2),
-        rgba(30, 30, 30, 0.1));
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 20px;
-    z-index: 1001;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    padding: 15px 20px;
+    z-index: 100;
+    transition: var(--transition);
 }
 
 .toolbar-content {
@@ -678,7 +644,6 @@ body::before {
     padding: 8px 12px;
     border-radius: 12px;
     min-width: 60px;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .toolbar-room-btn.active {
@@ -721,17 +686,29 @@ body::before {
 }
 
 /* Анимация сворачивания при скролле */
-body.scrolling-down .room-header {
-    transform: translateY(-100%);
+.scrolling .room-header {
+    transform: translateY(-50px);
+    opacity: 0.8;
 }
 
-body.scrolling-down .bottom-toolbar {
-    transform: translateY(100%);
+.scrolling .bottom-toolbar {
+    transform: translateY(50px);
+    opacity: 0.8;
 }
 
-body.scrolling-down .home-button {
-    transform: translateX(-120%);
-    opacity: 0;
+.scrolling .home-button {
+    transform: translateY(-20px) translateX(-20px) scale(0.8);
+    opacity: 0.6;
+}
+
+.scrolling .room-content {
+    top: 90px;
+    bottom: 30px;
+}
+
+/* Центрирование переключателя в компактном режиме */
+.scrolling .mode-switcher {
+    transform: scale(0.9);
 }
 
 /* -----------------------
@@ -752,73 +729,45 @@ body.scrolling-down .home-button {
     }
     
     .room-button {
-        width: 100%;
-        max-width: 300px;
         font-size: 1.4rem;
         padding: 18px 28px;
     }
     
-    .room-header h1 {
-        font-size: 1.6rem;
+    .room-content {
+        margin: 10px;
+        height: calc(100vh - 140px);
     }
     
     .content-section {
-        padding: 140px 10px 90px 10px;
+        padding: 10px;
     }
-
-    .mode-btn {
-        font-size: 0.9rem;
-        padding: 10px 5px;
+    
+    .content-section iframe {
+        min-height: calc(100vh - 200px);
     }
-
-    .toolbar-room-btn {
-        padding: 8px;
-        min-width: 50px;
+    
+    .content-section#booking-section iframe {
+        height: 500px !important;
+        max-height: 500px !important;
     }
-
-    .toolbar-room-icon {
-        width: 30px;
-        height: 30px;
-    }
-
-    .toolbar-room-label {
-        font-size: 0.65rem;
+    
+    .content-section#calendar-section iframe {
+        height: 500px !important;
     }
 }
 
 @media (max-width: 360px) {
-    .main-header h1 {
-        font-size: 1.6rem;
-    }
-
-    .room-header h1 {
-        font-size: 1.4rem;
+    .room-button {
+        width: 100%;
+        max-width: 250px;
     }
     
     .mode-switcher {
-        max-width: 100%;
+        max-width: 280px;
     }
     
     .mode-btn {
-        font-size: 0.8rem;
-        padding: 10px 5px;
+        font-size: 0.85rem;
+        padding: 10px 15px;
     }
 }
-
-/* -----------------------
-   Общие мобильные оптимизации
------------------------- */
-html {
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain; /* Предотвращает скролл "за пределы" body на мобильных */
-}
-
-/* Отключение подсветки при касании */
-button, a, div {
-    -webkit-tap-highlight-color: transparent;
-}
-

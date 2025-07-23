@@ -1,63 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Система бронирования аудиторий</title>
-  <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="assets/styles.css" />
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Система бронирования аудиторий</title>
+    
+    <!-- Принудительная мобильная детекция -->
+    <script>
+        // Принудительное определение как мобильного устройства
+        (function() {
+            var viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no';
+            }
+            
+            // Дополнительная защита от десктопного отображения
+            if (window.innerWidth > 480) {
+                document.documentElement.style.setProperty('--mobile-force', '1');
+                document.body.style.fontSize = '16px';
+                document.body.style.minWidth = 'auto';
+                document.body.style.maxWidth = '100vw';
+            }
+        })();
+    </script>
+    
+    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="assets/favicon-32x32.png" type="image/png">
 </head>
 <body>
-  <header>
-    <h1>Добро пожаловать в систему бронирования!</h1>
-  </header>
+    <div class="container">
+        <header class="main-header">
+            <h1>Добро пожаловать в<br>систему бронирования!</h1>
+        </header>
 
-  <main>
-    <p>Нажмите, для какого кабинета забронировать время или посмотреть расписание:</p>
-        
-        <a href="room3.html" class="room-button">Ц06</a>
-        <a href="room1.html" class="room-button">Ц07</a>
-        <a href="room2.html" class="room-button">Ц19</a>
+        <main class="main-content">
+            <p class="instruction-text">Нажмите, для какого кабинета забронировать время или посмотреть расписание:</p>
+            
+            <div class="room-buttons">
+                <a href="room3.html" class="room-button">Ц06</a>
+                <a href="room1.html" class="room-button">Ц07</a>
+                <a href="room2.html" class="room-button">Ц19</a>
+            </div>
+        </main>
 
+        <footer class="main-footer">
+            <div class="pwa-section">
+                <div class="pwa-instruction">
+                    <div class="pwa-icons-row">
+                        <div class="pwa-step">
+                            <span class="step-number">1</span>
+                            <img src="share.png" alt="Share" class="pwa-icon">
+                        </div>
+                        <div class="pwa-step">
+                            <span class="step-number">2</span>
+                            <img src="add.png" alt="Add" class="pwa-icon">
+                        </div>
+                    </div>
+                    <span class="pwa-text">Добавьте сайт на главный экран, чтобы использовать его как PWA-приложение</span>
+                </div>
+                <button id="installBtn" class="install-button" style="display:none;">
+                    <img src="iosicon.png" alt="iOS" class="install-icon">
+                    Установить приложение
+                </button>
+            </div>
+            
+            <div class="telegram-section">
+                <img src="tgicon.png" alt="Telegram" class="telegram-icon">
+                <span class="telegram-text">Сервис доступен также в виде Mini-app в Telegram:</span>
+                <a href="https://t.me/piraobot?startapp" class="telegram-button">Перейти</a>
+            </div>
+            
+            <div class="copyright">
+                <p>©tinsl, 2025</p>
+            </div>
+        </footer>
+    </div>
 
-      <!-- Если появятся дополнительные, добавьте их здесь -->
-  </main>
+    <script>
+        // PWA Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then((registration) => {
+                    console.log('Service Worker зарегистрирован с областью:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('Ошибка регистрации Service Worker:', error);
+                });
+        }
 
-  <footer>
-    <p>Добавьте сайт на главный экран, чтобы использовать его как PWA-приложение</p>
-    <button id="installBtn" style="display:none;">Установить приложение</button>
-
-    <p>Также доступно в виде <a href='https://t.me/piraobot'>Telegram Mini-App</a></p>
-    <p>© tinsl, 2025</p>
-  </footer>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('Service Worker зарегистрирован с областью:', registration.scope);
-        })
-        .catch((error) => {
-          console.error('Ошибка регистрации Service Worker:', error);
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').style.display = 'inline-flex';
         });
-    }
 
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('installBtn').style.display = 'inline-block';
-    });
-
-    document.getElementById('installBtn').addEventListener('click', () => {
-      document.getElementById('installBtn').style.display = 'none';
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        deferredPrompt = null;
-      });
-    });
-  </script>
-  
+        document.getElementById('installBtn').addEventListener('click', () => {
+            document.getElementById('installBtn').style.display = 'none';
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+                deferredPrompt = null;
+            });
+        });
+    </script>
 </body>
 </html>

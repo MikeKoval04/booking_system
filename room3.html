@@ -1,66 +1,194 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ц06</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-</head>
-<body>
-  <header>
-    <h1>Бронирование: Ц06</h1>
-  </header>
-
-  <main>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Аудитория Ц06</title>
     
-
-    <!-- Айфрейм с Яндекс.Формой -->
-    <section class="booking-form">
-      <h2>Форма бронирования</h2>
-    <script src="https://forms.yandex.ru/_static/embed.js">
+    <!-- Принудительная мобильная детекция -->
+    <script>
+        // Принудительное определение как мобильного устройства
+        (function() {
+            var viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no';
+            }
+            
+            // Дополнительная защита от десктопного отображения
+            if (window.innerWidth > 480) {
+                document.documentElement.style.setProperty('--mobile-force', '1');
+                document.body.style.fontSize = '16px';
+                document.body.style.minWidth = 'auto';
+                document.body.style.maxWidth = '100vw';
+            }
+        })();
     </script>
-    <iframe 
-      src="https://forms.yandex.ru/cloud/67b5cc61493639f465cb6614/?iframe=1&answer_short_text_71431068=Ц06"
-      frameborder="0"
-      name="ya-form-67b5cc61493639f465cb6614"
-      width="100%"
-      height="1000">
-    </iframe>
-      
-    </section>
+    
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="assets/favicon-32x32.png" type="image/png">
+</head>
+<body class="room-page">
+    <a href="index.html" class="home-button" title="На главную"></a>
+    
+    <header class="room-header">
+        <div class="header-content">
+            <h1>Аудитория Ц06</h1>
+            <div class="mode-switcher">
+                <button class="mode-btn active" data-mode="booking">Забронировать</button>
+                <button class="mode-btn" data-mode="calendar">Календарь</button>
+            </div>
+        </div>
+    </header>
 
-    <!-- Айфрейм с Google Calendar -->
-    <section class="calendar">
-      <h2>Расписание Ц06</h2>
-      <p>Для управления событием(изменением времени/удалением) используйте приложение Календарь на Вашем устройстве или Ваш Google Calendar (аккаунт должен совпадать с почтой, которую Вы указали). Управление доступно после того, как Вы примете приглашение на почте или в приложении.</p>
-      <p><a href = 'https://telegra.ph/Kak-prinyat-priglashenie-i-upravlyat-sobytiem-02-22'>Подробная инструкция о том, как управлять событием</a></p>
-      <iframe 
-        src="https://calendar.google.com/calendar/embed?src=af8066ba1f9fb42f7d892086935260a48aa9e3a0f6cb5972140e0ec0c63ecd01@group.calendar.google.com&ctz=Europe%2FMoscow&wkst=2&mode=WEEK" 
-        style="border: 0" 
-        width="100%" 
-        height="600" 
-        frameborder="0" 
-        scrolling="no">
-      </iframe>
-    </section>
+    <main class="room-content">
+        <!-- Секция бронирования -->
+        <div class="content-section active" id="booking-section">
+            <div class="booking-instruction">
+                <p>Проверьте в календаре, что временной слот, который вы хотите забронировать, свободен</p>
+            </div>
+            <script src="https://forms.yandex.ru/_static/embed.js"></script>
+            <div class="iframe-wrapper">
+                <iframe 
+                    src="https://forms.yandex.ru/cloud/67b5cc61493639f465cb6614/?iframe=1&answer_short_text_71431068=Ц06&embedded=1"
+                    frameborder="0"
+                    scrolling="no"
+                    name="ya-form-67b5cc61493639f465cb6614"
+                    class="yandex-form-iframe">
+                </iframe>
+            </div>
+        </div>
 
-    <p>Чтобы добавить календарь этой аудитории в приложение "Календарь" на iPhone:<br>Добавьте подписной календарь в приложении, вставив ссылку:<br><code class="break-word">https://calendar.google.com/calendar/ical/af8066ba1f9fb42f7d892086935260a48aa9e3a0f6cb5972140e0ec0c63ecd01%40group.calendar.google.com/public/basic.ics</code></code></p>
-    <button onclick="copyToClipboard()">Скопировать ссылку</button>
+        <!-- Секция календаря -->
+        <div class="content-section" id="calendar-section">
+            <div class="iframe-wrapper">
+                <iframe 
+                    src="https://calendar.google.com/calendar/embed?src=30d6cb00e3de7e0bb6f4eeb1ef2d8dcb5faf5e00c5a717e424bd42cdd6abb7f2@group.calendar.google.com&ctz=Europe%2FMoscow&wkst=2&mode=WEEK"
+                    frameborder="0"
+                    scrolling="yes">
+                </iframe>
+            </div>
+            
+            <div class="info-text">
+                <p>Для управления событием (изменения времени/удаления) используйте приложение Календарь на Вашем устройстве или Ваш Google Calendar (аккаунт должен совпадать с почтой, которую Вы указали). Управление доступно после того, как Вы примете приглашение на почте или в приложении.</p>
+                <p><a href="https://telegra.ph/Kak-prinyat-priglashenie-i-upravlyat-sobytiem-02-22" target="_blank">Подробная инструкция о том, как управлять событием</a></p>
+            </div>
+            
+            <div class="copy-link-section">
+                <p>Чтобы добавить календарь этой аудитории в приложение "Календарь" на iPhone:</p>
+                <p>Добавьте подписной календарь в приложении, вставив ссылку:</p>
+                <p><a href="https://telegra.ph/na-mobilnom-ustrojstve-02-13" target="_blank">Подробная инструкция о том, как добавить подписной календарь</a></p>
+                <div class="calendar-link" id="calendar-link">https://calendar.google.com/calendar/ical/30d6cb00e3de7e0bb6f4eeb1ef2d8dcb5faf5e00c5a717e424bd42cdd6abb7f2%40group.calendar.google.com/public/basic.ics</div>
+                <button class="copy-button" onclick="copyCalendarLink()">Скопировать ссылку</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Нижний тулбар навигации -->
+    <nav class="bottom-toolbar">
+        <div class="toolbar-content">
+            <a href="room3.html" class="toolbar-room-btn active">
+                <div class="toolbar-room-icon">6</div>
+                <div class="toolbar-room-label">Ц06</div>
+            </a>
+            <a href="room1.html" class="toolbar-room-btn">
+                <div class="toolbar-room-icon">7</div>
+                <div class="toolbar-room-label">Ц07</div>
+            </a>
+            <a href="room2.html" class="toolbar-room-btn">
+                <div class="toolbar-room-icon">19</div>
+                <div class="toolbar-room-label">Ц19</div>
+            </a>
+        </div>
+    </nav>
 
     <script>
-    function copyToClipboard() {
-      const text = "https://calendar.google.com/calendar/ical/af8066ba1f9fb42f7d892086935260a48aa9e3a0f6cb5972140e0ec0c63ecd01%40group.calendar.google.com/public/basic.ics";
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Ссылка скопирована в буфер обмена');
-      });
-    }
-    </script>
-    <p><i><a href='https://telegra.ph/na-mobilnom-ustrojstve-02-13'>ПОДРОБНАЯ ИНСТРУКЦИЯ</a></i></p>
-  </main>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            const body = document.body;
+            let lastScrollTop = 0;
+            let scrollTimeout;
 
-  <footer>
-    <p><a href="index.html">Вернуться на главную</a></p>
-    <p>©tinsl, 2025</p>
-  </footer>
+            // Переключение режимов
+            modeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mode = btn.dataset.mode;
+                    modeButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    const activeSection = document.getElementById(mode + '-section');
+                    activeSection.classList.add('active');
+                    activeSection.scrollTop = 0; // Сбрасываем скролл при переключении
+                    lastScrollTop = 0;
+                    body.classList.remove('scrolling-down');
+                });
+            });
+
+            // Обработка скролла для активной секции
+            function handleScroll() {
+                const activeSection = document.querySelector('.content-section.active');
+                if (!activeSection) return;
+
+                let st = activeSection.scrollTop;
+
+                // Простая логика для определения направления скролла
+                if (st > lastScrollTop && st > 10) {
+                    // Скролл вниз
+                    if (!body.classList.contains('scrolling-down')) {
+                        body.classList.add('scrolling-down');
+                    }
+                } else if (st < lastScrollTop) {
+                    // Скролл вверх
+                    if (body.classList.contains('scrolling-down')) {
+                        body.classList.remove('scrolling-down');
+                    }
+                }
+                
+                lastScrollTop = st <= 0 ? 0 : st;
+            }
+
+            // Навешиваем обработчик на все секции
+            contentSections.forEach(section => {
+                section.addEventListener('scroll', handleScroll, { passive: true });
+            });
+        });
+
+        // Копирование ссылки календаря
+        function copyCalendarLink() {
+            const link = document.getElementById('calendar-link').textContent;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(link).then(() => {
+                    showCopyMessage('Ссылка скопирована!');
+                });
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = link;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopyMessage('Ссылка скопирована!');
+            }
+        }
+
+        function showCopyMessage(message) {
+            const button = document.querySelector('.copy-button');
+            const originalText = button.textContent;
+            button.textContent = message;
+            button.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(135deg, var(--primary-orange), var(--primary-orange-hover))';
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
