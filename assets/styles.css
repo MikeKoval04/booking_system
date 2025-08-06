@@ -29,7 +29,7 @@ html {
     height: 100%;
     font-family: var(--font-family);
     overflow-x: hidden;
-    background-color: #1a1a1a; /* Set background for the whole page */
+    background-color: #000000; /* Set background for the whole page */
 }
 
 body {
@@ -42,7 +42,7 @@ body {
     padding-bottom: env(safe-area-inset-bottom); /* Only add padding to the bottom */
     
     /* Apply background to body and make it fixed */
-    background: #1a1a1a url('../back.png') center/cover no-repeat fixed;
+    background: #000000 url('../back.png') center/cover no-repeat fixed;
 }
 
 body::before {
