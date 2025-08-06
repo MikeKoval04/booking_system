@@ -25,16 +25,24 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
     height: 100%;
     font-family: var(--font-family);
     overflow-x: hidden;
+    background-color: #1a1a1a; /* Set background for the whole page */
 }
 
 body {
     color: var(--text-white);
     position: relative;
-    background-color: #1a1a1a; /* Fallback background color */
+    font-family: var(--font-family);
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    padding-bottom: env(safe-area-inset-bottom); /* Only add padding to the bottom */
+    
+    /* Apply background to body and make it fixed */
+    background: #1a1a1a url('../back.png') center/cover no-repeat fixed;
 }
 
 body::before {
@@ -44,19 +52,12 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../back.png') center/cover no-repeat;
-    z-index: -2;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
 }
 
 body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: -1;
+    content: none;
 }
   
 /* -----------------------
@@ -64,10 +65,12 @@ body::after {
 ------------------------ */
 .container {
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    padding-top: env(safe-area-inset-top); /* Keep top padding for container */
     max-width: 100%;
 }
 
