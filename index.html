@@ -44,7 +44,7 @@
     </script>
     
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="assets/styles.css">
     <link rel="icon" href="assets/favicon-32x32.png" type="image/png">
 </head>
@@ -101,7 +101,7 @@
     <script>
         // PWA Service Worker
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
+            navigator.serviceWorker.register('./sw.js', { scope: './' })
                 .then((registration) => {
                     console.log('Service Worker зарегистрирован с областью:', registration.scope);
                 })
