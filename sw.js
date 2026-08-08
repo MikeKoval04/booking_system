@@ -23,10 +23,37 @@ const APP_SHELL = [
   './tgicon.png'
 ];
 
+// Cloudflare Pages serves HTML with extensionless URLs, while GitHub Pages
+// keeps the .html suffix. These routes are cached on hosts that provide them.
+const OPTIONAL_ROUTES = [
+  './offline',
+  './room1',
+  './room2',
+  './room3',
+  './index_legacy',
+  './room1_legacy',
+  './room2_legacy',
+  './room3_legacy'
+];
+
+async function cacheOptionalRoutes(cache) {
+  await Promise.allSettled(
+    OPTIONAL_ROUTES.map(async (url) => {
+      const response = await fetch(url);
+      if (response.ok) {
+        await cache.put(url, response);
+      }
+    })
+  );
+}
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
+      .then(async (cache) => {
+        await cache.addAll(APP_SHELL);
+        await cacheOptionalRoutes(cache);
+      })
       .then(() => self.skipWaiting())
   );
 });
