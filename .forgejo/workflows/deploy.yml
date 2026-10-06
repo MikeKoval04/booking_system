@@ -13,8 +13,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare static site
+        run: |
+          mkdir _site
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name '.forgejo' \
+            ! -name '_site' \
+            -exec cp -a {} _site/ \;
+
       - name: Deploy static site
         uses: actions/deploy-pages@v1
         with:
-          directory: .
+          directory: ./_site
           custom-domain: pirao.bdpsy.ru
