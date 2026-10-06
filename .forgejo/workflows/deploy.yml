@@ -17,4 +17,4 @@ jobs:
         uses: actions/deploy-pages@v1
         with:
           directory: .
-          custom-domain: bdpsy.online
+          custom-domain: pirao.bdpsy.ru
