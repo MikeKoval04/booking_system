@@ -1,0 +1,20 @@
+name: Deploy to ALT Linux Space Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: als-tiny
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy static site
+        uses: actions/deploy-pages@v1
+        with:
+          directory: .
+          custom-domain: bdpsy.online
